@@ -8,6 +8,9 @@
   "To understand reality, we must compare our expectations against reality"
   (= 2 (+ 1 1))
 
+  "din mamma"
+  (= 3 (+ 2 1) 3)
+
   "You can test equality of many things"
   (= (+ 3 4) 7 (+ 2 5))
 

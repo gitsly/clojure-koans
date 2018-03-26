@@ -51,9 +51,13 @@
   (= 20 ((fn [f] (f 4 5))
            *))
 
-  "Higher-order functions take function arguments"
-  (= 25 (5
-          (fn [n] (* n n))))
+  "!!! Higher-order functions take function arguments"
+  (= 25 ((fn [a] (a 5)) (fn [n] (* n n))) )
 
-  "But they are often better written using the names of functions"
-  (= 25 (___ square)))
+  "But they are often better written using the names of functions, note function square is param to the 'fn' "
+  (= 25 ((fn [a] (a 5)) square))
+
+  "Lets try my own"
+  (= "aa" ((fn [p] (p "a")) (fn [s] (str s s)) ))
+
+)
