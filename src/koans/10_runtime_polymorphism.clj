@@ -1,5 +1,6 @@
 (ns koans.10-runtime-polymorphism
-  (:require [koan-engine.core :refer :all]))
+  (:require [koan-engine.core :refer :all]
+            [clojure.string :as string]))
 
 (defn hello
   ([] "Hello World!")
@@ -9,20 +10,27 @@
                           (interpose ", " (cons a more)))
                    "!")))
 
+;; !!! learn more about defmulti and defmethod
+;; https://clojure.org/reference/multimethods
 (defmulti diet (fn [x] (:eater x)))
-(defmethod diet :herbivore [a] __)
-(defmethod diet :carnivore [a] __)
-(defmethod diet :default [a] __)
+;;(defmethod diet :herbivore [a] ((string/join a " eats veggies.")))
+(defmethod diet :herbivore [a] (str (:name a) " eats veggies."))
+(defmethod diet :carnivore [a] (str (:name a) " eats animals."))
+(defmethod diet :default [a] (str "I don't know what " (:name a) " eats."))
+
+;; (println ">>>")
+;; (println (diet {:species "deer" :name "Bambi" :age 1 :eater :herbivore}))
+;; (println ">>>")
 
 (meditations
   "Some functions can be used in different ways - with no arguments"
-  (= __ (hello))
+  (= "Hello World!" (hello))
 
   "With one argument"
-  (= __ (hello "world"))
+  (= "Hello, you silly world." (hello "world"))
 
   "Or with many arguments"
-  (= __
+  (= "Hello to this group: Peter, Paul, Mary!"
      (hello "Peter" "Paul" "Mary"))
 
   "Multimethods allow more complex dispatching"

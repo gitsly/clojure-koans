@@ -1,6 +1,6 @@
 (ns koans.02-strings
   (:require [koan-engine.core :refer :all]
-            [clojure.string :as boegleif]
+            [clojure.string :as testish]
             [clojure.string :as string]
             ))
 
@@ -29,13 +29,13 @@
   (= "World" (subs "Hello World" 6 11))
 
   "How about joining together elements in a list?"
-  (= "123" (boegleif/join '(1 2 3)))
+  (= "123" (testish/join '(1 2 3)))
 
   "What if you wanted to separate them out?"
-  (= "1. 2. 3" (boegleif/join ". " '(1 2 3)))
+  (= "1. 2. 3" (testish/join ". " '(1 2 3)))
 
   "Maybe you want to separate out all your lines"
-  (= ["1" "2" "3"] (boegleif/split-lines "1\n2\n3"))
+  (= ["1" "2" "3"] (testish/split-lines "1\n2\n3"))
 
   "You may want to make sure your words are backwards"
   (= "olleh" (string/reverse "hello"))
