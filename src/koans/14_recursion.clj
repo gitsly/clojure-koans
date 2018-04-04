@@ -42,6 +42,7 @@
 ;; (defn fibo [s]
 ;;  [0 1 1 2 3 5 8 13])
 
+;;--------------------------------------------------------------------------------
 (defn fibo [seriesNo]
     (if (or (= seriesNo 0)(= seriesNo 1))
       seriesNo
@@ -50,7 +51,19 @@
 (defn fibonachi [length] (map fibo (range length)))
 
 ;; Output fibonachi sequence (8 values)
-(println (fibonachi 9))
+;; (println (fibonachi 9))
+;;--------------------------------------------------------------------------------
+
+;; Note: below is prone to Stack Overflow
+(defn my-inv-range [a]
+  (if (= a 0)
+    [a]
+    (cons a (my-inv-range (- a 1)) )))
+
+(defn myrange [a]
+  (reverse (my-inv-range a)))
+
+;;(println "myrange: " (myrange 100))
 
 
 (meditations
