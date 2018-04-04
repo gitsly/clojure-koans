@@ -7,8 +7,6 @@
      (not
       (is-even? (dec n)))))
 
-
-
 (defn recursive-reverse [coll]
   __)
 
@@ -31,12 +29,15 @@
       (recur (dec n) (not acc)))))
 
 
-(defn apan [x] (* 4 x))
-(println (map is-even-bigint? [100003N]))
+;; (defn apan [x] (* 4 x))
+;; (println (map is-even-bigint? [100003N]))
 
-(loop [n 10]
-  (println "test" n)
-  (recur (- n 1)))
+
+
+;;(defn monk (for [i (range 3)]
+;;  (+ i 10)))
+(println (for [x '(1 2 3)]
+         (+ 10 x)))
 
 (meditations
   "Recursion ends with a base case"
