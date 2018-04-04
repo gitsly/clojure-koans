@@ -2,9 +2,9 @@
   (:require [koan-engine.core :refer :all]))
 
 (defn is-even? [n]
-  (if (= n 0)
-    __
-    (___ (is-even? (dec n)))))
+   (if (= n 0)
+    true
+    (recur (is-even? (dec n)))))
 
 (defn is-even-bigint? [n]
   (loop [n   n
@@ -19,9 +19,14 @@
 (defn factorial [n]
   __)
 
+;; (println
+;;   (if (eval false)
+;;     "eval true"
+;;     "eval false"))
+
 (meditations
   "Recursion ends with a base case"
-  (= true (is-even? 0))
+  (= false (is-even? 0))
 
   "And starts by moving toward that base case"
   (= false (is-even? 1))

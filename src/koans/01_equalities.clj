@@ -1,3 +1,5 @@
+;; In emacs: do the M-!lein koan run&
+;; To start running the meditations in a separate buffer (async ftw)
 (ns koans.01-equalities
   (:require [koan-engine.core :refer :all]))
 
