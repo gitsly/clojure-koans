@@ -67,14 +67,16 @@
 
 
 ;; lets try a recur
-(defn myrecurtest ([n, res]
+(defn myrecurtest
+  ([n, res]
   (if (= n 0)
     res
-    (recur (- n 1) (cons n res)))))
+    (recur (- n 1) (cons n res))))
+  ([n]
+  (myrecurtest n [])))
 
 
-
-(println "myrecurtest: " (myrecurtest 3 []))
+(println "myrecurtest: " (myrecurtest 1000000000000000000))
 
 (meditations
   "Recursion ends with a base case"
