@@ -4,14 +4,10 @@
 (defn is-even? [n]
    (if (= n 0)
     true
-    (recur (is-even? (dec n)))))
+     (not
+      (is-even? (dec n)))))
 
-(defn is-even-bigint? [n]
-  (loop [n   n
-         acc true]
-    (if (= n 0)
-      __
-      (recur (dec n) (not acc)))))
+
 
 (defn recursive-reverse [coll]
   __)
@@ -24,9 +20,27 @@
 ;;     "eval true"
 ;;     "eval false"))
 
+;; (println (map is-even? [1 2 3 4]))
+
+
+(defn is-even-bigint? [n]
+  (loop [n   n
+         acc true]
+    (if (= n 0)
+      true
+      (recur (dec n) (not acc)))))
+
+
+(defn apan [x] (* 4 x))
+(println (map is-even-bigint? [100003N]))
+
+(loop [n 10]
+  (println "test" n)
+  (recur (- n 1)))
+
 (meditations
   "Recursion ends with a base case"
-  (= false (is-even? 0))
+  (= true (is-even? 0))
 
   "And starts by moving toward that base case"
   (= false (is-even? 1))
