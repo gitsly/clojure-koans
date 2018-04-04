@@ -66,6 +66,16 @@
 ;;(println "myrange: " (myrange 100))
 
 
+;; lets try a recur
+(defn myrecurtest ([n, res]
+  (if (= n 0)
+    res
+    (recur (- n 1) (cons n res)))))
+
+
+
+(println "myrecurtest: " (myrecurtest 3 []))
+
 (meditations
   "Recursion ends with a base case"
   (= true (is-even? 0))
