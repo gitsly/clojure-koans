@@ -32,12 +32,26 @@
 ;; (defn apan [x] (* 4 x))
 ;; (println (map is-even-bigint? [100003N]))
 
-
-
 ;;(defn monk (for [i (range 3)]
 ;;  (+ i 10)))
-(println (for [x '(1 2 3)]
-         (+ 10 x)))
+
+;; (println (for [x '(1 2 3)]
+;;         (+ 10 x)))
+
+
+;; (defn fibo [s]
+;;  [0 1 1 2 3 5 8 13])
+
+(defn fibo [seriesNo]
+    (if (or (= seriesNo 0)(= seriesNo 1))
+      seriesNo
+      (+ (fibo (- seriesNo 1) ) (fibo (- seriesNo 2)))))
+
+(defn fibonachi [length] (map fibo (range length)))
+
+;; Output fibonachi sequence (8 values)
+(println (fibonachi 9))
+
 
 (meditations
   "Recursion ends with a base case"
