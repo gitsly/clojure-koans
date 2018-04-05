@@ -18,7 +18,7 @@
 
 ;; (println
 ;;   (if (eval false)
-;;     "eval true"
+;p:     "eval true"
 ;;     "eval false"))
 
 ;; (println (map is-even? [1 2 3 4]))
@@ -94,8 +94,20 @@
         (println "counting" i)
         (recur (inc i)))))))
 
-(do (println "loop test: ")
-    (looptest 4))
+;; (do (println "loop test: ")
+;;     (looptest 4))
+
+;; Try nested recur (and loops)
+
+(defn nestedloop [max]
+  (loop [x 0]
+    (when (< x max)
+      (do
+        (println "x: " x)
+        (recur (inc x))))))
+
+(nestedloop 3)
+
 
 (meditations
   "Recursion ends with a base case"
