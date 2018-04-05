@@ -102,11 +102,23 @@
 (defn nestedloop [max]
   (loop [x 0]
     (when (< x max)
-      (do
-        (println "x: " x)
-        (recur (inc x))))))
+        (loop [y 0]
+          (when (< y max)
+              (println "(" x "," y ")")
+              (recur (inc y))))
+          (recur (inc x)))))
 
-(nestedloop 3)
+;; JCO example
+;;(defn nestedloop []
+;;  (loop [i 0]
+;;    (when (< i 5)
+;;      (loop [j 0]
+;;        (when (< j i)
+;;          (println i j)
+;;          (recur (inc j))))
+;;      (recur (inc i)))))
+
+;;(nestedloop 2)
 
 
 (meditations
