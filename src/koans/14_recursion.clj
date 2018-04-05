@@ -1,3 +1,6 @@
+;; Good link for learning more about recursion and list comprehension in clojure:
+;; https://kimh.github.io/clojure-by-example/#recursion
+
 (ns koans.14-recursion
   (:require [koan-engine.core :refer :all]))
 
@@ -20,7 +23,6 @@
 
 ;; (println (map is-even? [1 2 3 4]))
 
-
 (defn is-even-bigint? [n]
   (loop [n   n
          acc true]
@@ -37,7 +39,6 @@
 
 ;; (println (for [x '(1 2 3)]
 ;;         (+ 10 x)))
-
 
 ;; (defn fibo [s]
 ;;  [0 1 1 2 3 5 8 13])
@@ -66,7 +67,9 @@
 ;;(println "myrange: " (myrange 100))
 
 
-;; lets try a recur
+;; lets try a recur, note that this function does not cause stack-overflow
+;; When you use recur, it makes sure you are doing tail recursion.
+;; but is really slow for larger sequences since it's not lazy evaluated
 (defn myrecurtest
   ([n, res]
   (if (= n 0)
@@ -75,8 +78,24 @@
   ([n]
   (myrecurtest n [])))
 
+;; (println "myrecurtest: " (take 4 (myrecurtest 100)))
 
-(println "myrecurtest: " (myrecurtest 1000000000000000000))
+
+;; Loop test (count-up)
+;; loop is always used with recur and provides a recursion point for recur
+
+(defn looptest [target]
+  (do
+    (println "Outside of loop, recur will not include this when calling method to it's recursion point for recur")
+  (loop [i 0]
+    (if (= i target)
+        (println "Complete")
+      (do
+        (println "counting" i)
+        (recur (inc i)))))))
+
+(do (println "loop test: ")
+    (looptest 4))
 
 (meditations
   "Recursion ends with a base case"
