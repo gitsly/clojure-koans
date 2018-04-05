@@ -4,32 +4,13 @@
 (ns koans.14-recursion
   (:require [koan-engine.core :refer :all]))
 
-(defn is-even? [n]
-   (if (= n 0)
-    true
-     (not
-      (is-even? (dec n)))))
-
-(defn recursive-reverse [coll]
-  __)
-
-(defn factorial [n]
-  __)
 
 ;; (println
 ;;   (if (eval false)
-;p:     "eval true"
+;;     "eval true"
 ;;     "eval false"))
 
 ;; (println (map is-even? [1 2 3 4]))
-
-(defn is-even-bigint? [n]
-  (loop [n   n
-         acc true]
-    (if (= n 0)
-      true
-      (recur (dec n) (not acc)))))
-
 
 ;; (defn apan [x] (* 4 x))
 ;; (println (map is-even-bigint? [100003N]))
@@ -120,6 +101,41 @@
 
 ;;(nestedloop 2)
 
+(defn is-even? [n]
+   (if (= n 0)
+    true
+     (not
+      (is-even? (dec n)))))
+
+
+
+(defn factorial [n]
+  __)
+
+
+
+
+
+(defn is-even-bigint? [n]
+  (loop [n   n      ;; p1 (n's initial value is passed in 'n')
+         acc true]  ;; p2 (acc's initial value is true)
+    (if (= n 0)
+      acc
+      (do
+       ;;(println n)
+       ;;       p1      p2
+       ;; Recur will take us to loop point
+       (recur (dec n) (not acc))))))
+
+
+(defn recursive-reverse [coll]
+  (loop [in coll
+         res []]
+    (if (= '() in)
+        res
+        (recur (rest in) (cons (first in) res)))))
+
+;;(println (recursive-reverse [1 2 3 4]))
 
 (meditations
   "Recursion ends with a base case"
